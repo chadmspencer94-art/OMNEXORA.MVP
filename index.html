@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grok Master Prompt Builder</title>
+    <meta
+      name="description"
+      content="Generate a strict, anti-hallucination Grok master prompt for Cursor in seconds."
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-theme="dark">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-row">
+        <div>
+          <p class="eyebrow">Premium Prompt Workflow</p>
+          <h1>Grok Master Prompt Builder</h1>
+          <p class="subtitle">
+            High-accuracy prompt generation with reliability guardrails, local tests, and quick copy/export.
+          </p>
+        </div>
+        <button id="theme-toggle" type="button" class="secondary small">Switch theme</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="container page-grid">
+      <section class="card" aria-labelledby="input-title">
+        <h2 id="input-title">1) Configure your app request</h2>
+        <form id="prompt-form" novalidate>
+          <label for="app-idea">App idea</label>
+          <textarea
+            id="app-idea"
+            name="appIdea"
+            rows="8"
+            placeholder="Example: Real-time collaborative todo app with Supabase auth, sharing, offline mode, and analytics."
+            required
+          ></textarea>
+
+          <div class="field-row">
+            <div>
+              <label for="deploy-target">Deploy target</label>
+              <select id="deploy-target" name="deployTarget">
+                <option>Vercel</option>
+                <option>Netlify</option>
+                <option>Cloudflare Pages</option>
+                <option>Render</option>
+              </select>
+            </div>
+            <div>
+              <label for="model-route">Model route note</label>
+              <input
+                id="model-route"
+                name="modelRoute"
+                type="text"
+                value="Grok via OpenRouter (if configured)"
+                readonly
+              />
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button type="submit" class="primary">Generate prompt</button>
+            <button id="copy-prompt" type="button" class="secondary" disabled>Copy</button>
+            <button id="download-prompt" type="button" class="secondary" disabled>Download .txt</button>
+            <button id="reset-form" type="reset" class="ghost">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="output-title">
+        <h2 id="output-title">2) Copy into Cursor</h2>
+        <p class="helper">
+          Paste generated prompt into Cursor Chat/Agent, then answer clarification questions.
+        </p>
+        <label for="prompt-output">Generated prompt</label>
+        <textarea id="prompt-output" rows="20" readonly></textarea>
+        <div class="meta-row">
+          <p id="output-stats" class="muted">0 chars</p>
+          <p id="status-text" class="status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="card quick-checks" aria-labelledby="checks-title">
+        <h2 id="checks-title">3) Fast execution checklist</h2>
+        <ol>
+          <li>Generate prompt with your exact app scope.</li>
+          <li>Paste into Cursor and approve architecture plan before code.</li>
+          <li>Require test/build output after each major step.</li>
+          <li>Stop after 3 failed fix loops and decide next action.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Local-first. Fast. Accurate. Tool-driven.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./app/main.js"></script>
+  </body>
+</html>

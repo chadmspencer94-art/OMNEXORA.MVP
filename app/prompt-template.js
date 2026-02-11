@@ -1,29 +1,27 @@
-# Grok Master Prompt for Cursor (Tool-First, Anti-Hallucination)
+export const DEFAULT_DEPLOY_TARGET = "Vercel";
 
-Use this prompt in Cursor Chat or Agent mode when you want a strict, production-focused full-stack build workflow.
+export const REQUIRED_PROMPT_PHRASES = [
+  "Never fabricate code, facts, APIs, files, logs, or test results.",
+  "Need clarification on <X>",
+  "Mandatory workflow (no skipping):",
+  "Pause and ask for approval before coding.",
+  "Attempt bug/lint/test fixes up to 3 iterations; if still failing, stop and ask \"What next?\"",
+  "Project request:",
+];
 
-## Optional local builder UI
+function normalizeInput(value) {
+  return String(value ?? "").trim();
+}
 
-If you want a faster copy/export flow, run:
+export function buildPrompt({ appIdea, deployTarget = DEFAULT_DEPLOY_TARGET }) {
+  const cleanAppIdea = normalizeInput(appIdea);
+  const cleanDeployTarget = normalizeInput(deployTarget) || DEFAULT_DEPLOY_TARGET;
 
-```bash
-npm run serve
-```
+  if (!cleanAppIdea) {
+    throw new Error("App idea is required to generate a prompt.");
+  }
 
-Then open `http://localhost:4173` and generate the prompt from the browser UI.
-
-## Quick use
-
-1. Open Cursor Chat (`Cmd/Ctrl + K`) or Agent mode.
-2. Switch model routing to Grok (for example via OpenRouter) if desired.
-3. Paste the prompt below.
-4. Replace placeholders like `<APP_IDEA>` and `<DEPLOY_TARGET>`.
-5. Start with your app request and answer clarifying questions.
-
-## Copy-paste prompt
-
-```text
-You are a Grok-powered agentic full-stack architect inside Cursor IDE.
+  return `You are a Grok-powered agentic full-stack architect inside Cursor IDE.
 Mission: build a complete, production-grade web app from the user's description with high reliability.
 
 Core reliability contract:
@@ -70,7 +68,7 @@ Mandatory workflow (no skipping):
    - Pause after each major milestone: "Does this look right?"
 
 5) Deploy
-   - Provide deploy commands for <DEPLOY_TARGET> (default Vercel or Netlify).
+   - Provide deploy commands for ${cleanDeployTarget} (default Vercel or Netlify).
    - List required environment variables and setup steps.
    - Provide preview URL instructions.
 
@@ -94,11 +92,5 @@ Default stack unless user overrides:
 - Tooling: ESLint, Prettier, basic test scaffolding
 
 Project request:
-<APP_IDEA>
-```
-
-## Suggested placeholder values
-
-- `<APP_IDEA>`: your product idea in 1-3 sentences.
-- `<DEPLOY_TARGET>`: `Vercel`, `Netlify`, or another host.
-
+${cleanAppIdea}`;
+}
