@@ -9,6 +9,7 @@
     "check": "node scripts/validate-repo.mjs && node --test",
     "smoke": "node --test tests/browser-smoke.test.mjs",
     "debug:prompt": "node scripts/debug-prompt.mjs",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173",
+    "qa:manual": "npm run check && npm run serve"
   }
 }
