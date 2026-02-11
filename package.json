@@ -1,8 +1,8 @@
 {
-  "name": "grok-master-prompt-pack",
+  "name": "ultra-reliable-master-prompt-pack",
   "version": "1.0.0",
   "private": true,
-  "description": "Local prompt builder and QA checks for a Grok master prompt workflow.",
+  "description": "Local prompt builder and QA checks for an ultra-reliable master prompt workflow.",
   "type": "module",
   "scripts": {
     "test": "node --test",

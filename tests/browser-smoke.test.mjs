@@ -61,7 +61,7 @@ test("local browser smoke: index page serves expected UI", async () => {
     const response = await fetch(`http://127.0.0.1:${port}/`);
     assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /Grok Master Prompt Builder/);
+    assert.match(html, /Ultra-Reliable Master Prompt Builder/);
     assert.match(html, /id="prompt-form"/);
     assert.match(html, /id="prompt-output"/);
     assert.match(html, /src="\.\/app\/main\.js"/);

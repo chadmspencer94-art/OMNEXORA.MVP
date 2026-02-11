@@ -27,7 +27,7 @@ async function validateFilesExist() {
 async function validateDocs() {
   const docs = await readFile("docs/grok-master-prompt.md", "utf8");
   const requiredDocPhrases = [
-    "# Grok Master Prompt for Cursor",
+    "# Ultra-Reliable Full-Stack Master Prompt for Cursor",
     "## Copy-paste prompt",
     "<APP_IDEA>",
     "<DEPLOY_TARGET>",

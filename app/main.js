@@ -12,7 +12,7 @@ const themeToggle = document.querySelector("#theme-toggle");
 
 const DEFAULT_APP_IDEA =
   "Real-time collaborative todo app with Supabase auth, sharing links, dark mode UI, and offline support.";
-const THEME_KEY = "grok_prompt_builder_theme";
+const THEME_KEY = "ultra_reliable_prompt_builder_theme";
 
 function setStatus(message, isError = false) {
   statusText.textContent = message;
@@ -41,7 +41,7 @@ function generatePrompt() {
       deployTarget: deployTargetField.value || DEFAULT_DEPLOY_TARGET,
     });
     setOutput(prompt);
-    setStatus("Prompt generated. Copy and paste into Cursor.");
+    setStatus("Prompt generated. Copy into Cursor Chat or Agent mode.");
   } catch (error) {
     setOutput("");
     setStatus(error instanceof Error ? error.message : "Unable to generate prompt.", true);
@@ -78,10 +78,10 @@ function downloadPrompt() {
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = "grok-master-prompt.txt";
+  anchor.download = "ultra-reliable-master-prompt.txt";
   anchor.click();
   URL.revokeObjectURL(url);
-  setStatus("Downloaded prompt as grok-master-prompt.txt.");
+  setStatus("Downloaded prompt as ultra-reliable-master-prompt.txt.");
 }
 
 function applyTheme(theme) {

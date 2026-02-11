@@ -11,9 +11,9 @@ test("buildPrompt injects app idea and deploy target", () => {
   const deployTarget = "Netlify";
   const prompt = buildPrompt({ appIdea, deployTarget });
 
-  assert.match(prompt, /Project request:/);
+  assert.match(prompt, /My app idea:/);
   assert.match(prompt, /Collaborative wiki with auth and realtime comments/);
-  assert.match(prompt, /Provide deploy commands for Netlify/);
+  assert.match(prompt, /Deploy: Netlify one-click if possible - provide command\./);
 });
 
 test("buildPrompt trims incoming values", () => {
@@ -23,7 +23,7 @@ test("buildPrompt trims incoming values", () => {
   });
 
   assert.match(prompt, /AI journaling app with semantic search/);
-  assert.match(prompt, /Provide deploy commands for Vercel/);
+  assert.match(prompt, /Preferred deploy target: Vercel\./);
 });
 
 test("buildPrompt falls back to default deploy target", () => {
@@ -32,7 +32,7 @@ test("buildPrompt falls back to default deploy target", () => {
     deployTarget: " ",
   });
 
-  assert.match(prompt, new RegExp(`Provide deploy commands for ${DEFAULT_DEPLOY_TARGET}`));
+  assert.match(prompt, new RegExp(`Preferred deploy target: ${DEFAULT_DEPLOY_TARGET}\\.`));
 });
 
 test("buildPrompt rejects empty app idea", () => {
