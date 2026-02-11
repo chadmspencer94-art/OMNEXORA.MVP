@@ -1,4 +1,4 @@
-import { Todo } from '../types/todo';
+import type { Todo } from '../types/todo';
 
 const DB_NAME = 'todo-collab-db';
 const DB_VERSION = 1;

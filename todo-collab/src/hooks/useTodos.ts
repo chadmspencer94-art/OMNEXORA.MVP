@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { offlineStore } from '../lib/offline';
-import { Todo, TodoList } from '../types/todo';
+import type { Todo } from '../types/todo';
 
 export function useTodos(userId: string, listId: string, isDemoMode: boolean) {
   const [todos, setTodos] = useState<Todo[]>([]);
