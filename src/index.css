@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@custom-variant light (&:where(.light, .light *));
+
+html {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+::selection {
+  background-color: rgb(99 102 241 / 0.3);
+}
